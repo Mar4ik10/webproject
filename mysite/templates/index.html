@@ -1,1 +1,26 @@
-{% extends 'base.html'%} {% block main%} {% endblock %}
+{% extends 'base.html'%} {% block main %}
+<div class="content-index">
+  <div class="image-index">
+    <img
+      style="width: 150px; transform: translate(-5px, -28px) scale(1.2)"
+      src="{{ home.img }}"
+      alt="Profile Picture"
+    />
+  </div>
+  <div style="color: white">
+    <h1>{{ home.title }}</h1>
+    <hr
+      style="
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+      "
+    />
+    <div style="font-size: 22px">{{ home.text | safe}}</div>
+  </div>
+  {% endblock %}
+</div>

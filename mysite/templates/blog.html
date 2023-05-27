@@ -1,1 +1,14 @@
-{% extends 'base.html'%} {% block main%} {% endblock %}
+{% extends 'base.html'%} 
+
+{% block main %}
+  <div>
+    <h1>Blogs are shown here:</h2>
+      {% for post in posts %}
+        <div>
+          <h2>{{ post.title }}</h2>
+          {{ post.text | safe }}
+          <small>{{ post.created }}</small>
+        </div>
+      {% endfor %}
+  </div>
+{% endblock %}

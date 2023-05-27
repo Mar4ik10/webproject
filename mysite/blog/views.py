@@ -5,11 +5,13 @@ from . import models
 
 
 def home(request):
-    return render(request, 'index.html')
+    queryset = models.HomeModel.objects.first()
+    print(queryset.img)
+    return render(request, 'index.html', {"home": queryset})
 
 
-def about(request):
-    return render(request, 'about.html')
+def contact(request):
+    return render(request, 'contact.html')
 
 
 def portfolio(request):
@@ -17,4 +19,5 @@ def portfolio(request):
 
 
 def blog(request):
-    return render(request, 'blog.html')
+    query = models.BlogModel.objects.all()
+    return render(request, 'blog.html', {"posts": query})

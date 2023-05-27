@@ -3,9 +3,11 @@ from ckeditor.fields import RichTextField
 
 # Create your models here.
 
+
 class HomeModel(models.Model):
     title = models.CharField(max_length=100)
     text = RichTextField()
+    img = models.ImageField(upload_to='public/')
 
     def __str__(self):
         return self.title
@@ -21,7 +23,7 @@ class BlogModel(models.Model):
         return self.title
 
 
-class AboutModel(models.Model):
+class ContactModel(models.Model):
     title = models.CharField(max_length=64)
     text = RichTextField()
 
@@ -29,12 +31,23 @@ class AboutModel(models.Model):
         return self.title
 
 
-class AboutUrlsModel(models.Model):
-    ICON_CHOICES = [("instagram", "Instagram"), ("youtube", "YouTube"), ("telegram", "Telegram"), ("github", "GitHub"), ("twitter", "Twitter")]
-    
+class ContactUrlsModel(models.Model):
+    ICON_CHOICES = [("instagram", "Instagram"), ("youtube", "YouTube"),
+                    ("telegram", "Telegram"), ("github", "GitHub"), ("twitter", "Twitter")]
+
     name = models.CharField(max_length=64)
     url = models.URLField(max_length=200)
     icons = models.CharField(max_length=64, choices=ICON_CHOICES)
 
     def __str__(self):
         return self.name
+
+
+class PortfolioModel(models.Model):
+    title = models.CharField(max_length=100)
+    created = models.DateTimeField(auto_now_add=True, auto_created=True)
+    url = models.URLField(max_length=200)
+    img = models.ImageField(upload_to='public/')
+
+    def __str__(self):
+        return self.title
