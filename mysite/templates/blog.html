@@ -1,14 +1,34 @@
-{% extends 'base.html'%} 
-
-{% block main %}
-  <div>
-    <h1>Blogs are shown here:</h2>
-      {% for post in posts %}
-        <div>
-          <h2>{{ post.title }}</h2>
-          {{ post.text | safe }}
-          <small>{{ post.created }}</small>
-        </div>
-      {% endfor %}
+{% extends 'base.html'%} {% block main %}
+<div class="posts-container">
+  {% for post in posts %}
+  <div class="card" style="width: 18rem">
+    <img class="card-img-top" src="/{{ post.img }}" alt="Card image cap" />
+    <div class="card-body">
+      <h5 class="card-title" style="margin: 0">
+        <span class="overflow-text">{{ post.title }}</span>
+      </h5>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
   </div>
+  {% endfor %}
+</div>
+<script>
+  function truncateText() {
+    const textContainers = document.getElementsByClassName("card-title");
+
+    Array.from(textContainers).forEach(container => {
+      const textElement = container.querySelector(".overflow-text");
+      const maxHeight = container.clientHeight;
+      while (textElement.offsetHeight > maxHeight) {
+        textElement.textContent = textElement.textContent.replace(
+          /\W*\s(\S)*$/,
+          "..."
+        );
+      }
+    });
+  }
+
+  window.addEventListener("load", truncateText);
+  window.addEventListener("resize", truncateText);
+</script>
 {% endblock %}

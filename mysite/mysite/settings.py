@@ -54,8 +54,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public')
-MEDIA_URL = "/public/"
 
 TEMPLATES = [
     {
@@ -72,7 +70,7 @@ TEMPLATES = [
         },
     },
 ]
-print(MEDIA_ROOT, MEDIA_URL)
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
