@@ -21,3 +21,8 @@ def portfolio(request):
 def blog(request):
     query = models.BlogModel.objects.all()
     return render(request, 'blog.html', {"posts": query})
+
+
+def blog_detail(request, pk):
+    query = models.BlogModel.objects.get(pk=pk)
+    return render(request, 'blogdetail.html', {'blog': query})

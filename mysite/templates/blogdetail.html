@@ -1,0 +1,11 @@
+{% extends 'base.html'%} {% block main %}
+<div class="blog-detail">
+  <header>
+    <img src="/{{ blog.img }}" alt="Blog image" />
+    <h1>{{ blog.title }}</h1>
+  </header>
+  <div class="blog-body text-together">
+    <div>{{ blog.text | safe }}</div>
+  </div>
+</div>
+{% endblock %}
