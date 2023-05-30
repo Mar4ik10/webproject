@@ -23,26 +23,6 @@ class BlogModel(models.Model):
         return self.title
 
 
-class ContactModel(models.Model):
-    title = models.CharField(max_length=64)
-    text = RichTextField()
-
-    def __str__(self):
-        return self.title
-
-
-class ContactUrlsModel(models.Model):
-    ICON_CHOICES = [("instagram", "Instagram"), ("youtube", "YouTube"),
-                    ("telegram", "Telegram"), ("github", "GitHub"), ("twitter", "Twitter")]
-
-    name = models.CharField(max_length=64)
-    url = models.URLField(max_length=200)
-    icons = models.CharField(max_length=64, choices=ICON_CHOICES)
-
-    def __str__(self):
-        return self.name
-
-
 class PortfolioModel(models.Model):
     title = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True, auto_created=True)

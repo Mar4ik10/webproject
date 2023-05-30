@@ -10,12 +10,9 @@ def home(request):
     return render(request, 'index.html', {"home": queryset})
 
 
-def contact(request):
-    return render(request, 'contact.html')
-
-
 def portfolio(request):
-    return render(request, 'portfolio.html')
+    query = models.PortfolioModel.objects.all()
+    return render(request, 'portfolio.html', {"portfolios": query})
 
 
 def blog(request):

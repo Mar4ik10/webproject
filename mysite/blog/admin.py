@@ -5,4 +5,4 @@ from . import models
 
 admin.site.register(models.BlogModel)
 admin.site.register(models.HomeModel)
-admin.site.register(models.ContactModel)
+admin.site.register(models.PortfolioModel)

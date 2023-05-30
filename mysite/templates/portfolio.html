@@ -1,1 +1,36 @@
-{% extends 'base.html'%} {% block main%} {% endblock %}
+{% extends 'base.html' %} {% block main %}
+<div class="posts-container">
+  {% for portfolio in portfolios %}
+  <div class="card" style="width: 18rem">
+    <img class="card-img-top" src="/{{ portfolio.img }}" alt="Card image cap" />
+    <div class="card-body">
+      <h5 class="card-title" style="margin: 0">
+        <span class="overflow-text">{{ portfolio.title }}</span>
+      </h5>
+      <a href="{{ portfolio.url }}" target="_blank" class="btn btn-primary"
+        >View on GitHub</a
+      >
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<script>
+  function truncateText() {
+    const textContainers = document.getElementsByClassName("card-title");
+
+    Array.from(textContainers).forEach(container => {
+      const textElement = container.querySelector(".overflow-text");
+      const maxHeight = container.clientHeight;
+      while (textElement.offsetHeight > maxHeight) {
+        textElement.textContent = textElement.textContent.replace(
+          /\W*\s(\S)*$/,
+          "..."
+        );
+      }
+    });
+  }
+
+  window.addEventListener("load", truncateText);
+  window.addEventListener("resize", truncateText);
+</script>
+{% endblock %}
